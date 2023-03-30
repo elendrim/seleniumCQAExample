@@ -1,5 +1,7 @@
 package com.github.elendrim.seleniumcqaexemple.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seleniumcqa.AssertText.ASSERT_CONTAINS;
 import static seleniumcqa.AssertText.ASSERT_EMPTY;
 import static seleniumcqa.AssertText.ASSERT_EQUALS;
@@ -23,6 +25,7 @@ import java.time.Duration;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -65,6 +68,29 @@ public class WebDriverBotAssertTest {
 
 		} finally {
 			driver.close();
+		}
+	}
+	
+	@ParameterizedTest
+	@ArgumentsSource(WebDriverArgumentsProvider.class)
+	public void timeoutExceptionOnElementNotFound(WebDriver driver) {
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofMillis(0));
+			driver.manage().window().maximize();
+			
+			WebDriverBot webDriverBot = new WebDriverBotImpl(driver);
+			webDriverBot.visit("https://www.selenium.dev/selenium/web/web-form.html");
+	
+			
+			TimeoutException thrown = assertThrows(
+	  	           TimeoutException.class,
+	  	           () -> webDriverBot.find(By.id("element-not-present")).should(GET_TEXT, ASSERT_NOT_EMPTY),
+	  	           "Expected find to throw timeoutException, but it didn't"
+	  	    );
+			
+			assertEquals("Expected condition failed: waiting for queryAndAssert with by 'By.id: element-not-present' (tried for 10 second(s) with 500 milliseconds interval)", thrown.getRawMessage());
+		}finally {
+			driver.quit();
 		}
 	}
 
