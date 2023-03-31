@@ -1,9 +1,9 @@
 package com.github.elendrim.seleniumcqaexemple.selenium;
 
-import static seleniumcqa.AssertText.ASSERT_EQUALS;
-import static seleniumcqa.AssertText.ASSERT_EQUALS_IGNORE_CASE;
-import static seleniumcqa.AssertText.GET_TEXT;
-import static seleniumcqa.AssertText.GET_TITLE;
+import static com.github.elendrim.seleniumcqa.AssertText.ASSERT_EQUALS;
+import static com.github.elendrim.seleniumcqa.AssertText.ASSERT_EQUALS_IGNORE_CASE;
+import static com.github.elendrim.seleniumcqa.AssertText.GET_TEXT;
+import static com.github.elendrim.seleniumcqa.AssertText.GET_TITLE;
 
 import java.time.Duration;
 
@@ -14,9 +14,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import seleniumcqa.Configuration;
-import seleniumcqa.WebDriverBot;
-import seleniumcqa.WebDriverBotImpl;
+import com.github.elendrim.seleniumcqa.Configuration;
+import com.github.elendrim.seleniumcqa.WebDriverBot;
+import com.github.elendrim.seleniumcqa.WebDriverBotImpl;
 
 public class SeleniumWebFormTest {
 
