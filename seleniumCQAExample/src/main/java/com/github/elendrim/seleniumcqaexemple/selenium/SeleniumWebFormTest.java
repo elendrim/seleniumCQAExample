@@ -1,9 +1,9 @@
 package com.github.elendrim.seleniumcqaexemple.selenium;
 
-import static com.github.elendrim.seleniumcqa.AssertText.ASSERT_EQUALS;
-import static com.github.elendrim.seleniumcqa.AssertText.ASSERT_EQUALS_IGNORE_CASE;
-import static com.github.elendrim.seleniumcqa.AssertText.GET_TEXT;
-import static com.github.elendrim.seleniumcqa.AssertText.GET_TITLE;
+import static com.github.elendrim.seleniumcqa.AssertFunctions.ASSERT_EQUALS;
+import static com.github.elendrim.seleniumcqa.AssertFunctions.ASSERT_EQUALS_IGNORE_CASE;
+import static com.github.elendrim.seleniumcqa.GetFunctions.GET_TEXT;
+import static com.github.elendrim.seleniumcqa.GetFunctions.GET_TITLE;
 
 import java.time.Duration;
 
